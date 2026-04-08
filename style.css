@@ -1,0 +1,407 @@
+/* GLOBAL STYLES */
+:root {
+    --bg-deep-blue: #0F172A;
+    --accent-blue: #2563EB;
+    --white: #FFFFFF;
+    --light-gray: #E5E7EB;
+    --text-muted: #94A3B8;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+    background-color: var(--bg-deep-blue);
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Enables smooth scrolling between sections */
+}
+
+/* UNIQUE FLOATING NAVBAR */
+.navbar {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 25px 0;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+
+/* Morph to Floating Island on Scroll */
+.navbar-scrolled {
+    margin-top: 15px;
+    padding: 10px 0;
+    background: rgba(15, 23, 42, 0.8) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    border-radius: 50px;
+    width: 90%;
+    left: 5%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                0 0 15px rgba(37, 99, 235, 0.2);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+    color: var(--white) !important;
+}
+
+.text-accent {
+    color: var(--accent-blue) !important;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation Links */
+.nav-link {
+    margin: 0 5px;
+    position: relative;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 8px 20px !important;
+    transition: all 0.3s ease;
+    border-radius: 25px;
+}
+
+/* Animated Underline Effect - Hidden on Mobile for better UX */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 20%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px var(--accent-blue);
+}
+
+@media (min-width: 992px) {
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 60%;
+    }
+}
+
+.nav-link:hover {
+    color: var(--white) !important;
+    background: rgba(37, 99, 235, 0.15);
+}
+
+/* Special Styling for Join Us Button in Nav */
+.nav-join-btn {
+    background: var(--accent-blue);
+    color: white !important;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    margin-left: 15px;
+}
+
+.nav-join-btn:hover {
+    background: #1D4ED8 !important;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Custom Hamburger Icon */
+.navbar-toggler {
+    border: none;
+    padding: 0;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    background-image: none !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before { box-shadow: 0 9px 0 var(--white); }
+
+/* MOBILE MENU OVERLAY */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: var(--bg-deep-blue);
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+    
+    .navbar-scrolled {
+        width: 95%;
+        left: 2.5%;
+    }
+}
+
+/* BUTTONS */
+.btn-primary {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1D4ED8;
+    border-color: #1D4ED8;
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+/* HERO SECTION */
+.hero-section {
+    min-height: 80vh;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    padding-top: 80px;
+}
+
+/* SECTION BACKGROUNDS */
+.bg-light-section {
+    background-color: var(--light-gray);
+    color: var(--bg-deep-blue);
+}
+
+/* SERVICES */
+.service-card {
+    transition: transform 0.3s ease;
+    background-color: var(--white);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* PROJECTS */
+.project-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: var(--white);
+    color: var(--bg-deep-blue);
+}
+
+.project-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h5 {
+    transition: color 0.3s ease;
+}
+
+.project-card:hover h5 {
+    color: var(--accent-blue);
+}
+
+.project-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* JOIN FORM STYLES */
+.join-form-card {
+    background-color: var(--white);
+    color: var(--bg-deep-blue);
+    border-radius: 15px;
+}
+
+/* Specific Fix for Join Us Tabs - Overriding global .nav-link */
+#applicationTabs .nav-link {
+    color: var(--bg-deep-blue) !important;
+    background-color: rgba(15, 23, 42, 0.05) !important;
+    border-radius: 10px !important;
+    padding: 12px 20px !important;
+    margin: 5px !important;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+#applicationTabs .nav-link.active {
+    background-color: var(--accent-blue) !important;
+    color: var(--white) !important;
+    transform: translateY(-3px);
+    border: 1px solid var(--accent-blue);
+}
+
+/* Remove navbar underline effect from these tabs */
+#applicationTabs .nav-link::after {
+    display: none !important;
+}
+
+/* Mobile arrangement fix for tabs */
+@media (max-width: 576px) {
+    #applicationTabs {
+        flex-direction: column;
+    }
+    #applicationTabs .nav-item {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    #applicationTabs .nav-link {
+        margin: 5px 0 !important;
+    }
+}
+
+.join-form-card .form-control, 
+.join-form-card .form-select {
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    padding: 12px;
+}
+
+.join-form-card .form-control:focus {
+    background-color: #FFFFFF;
+}
+
+/* JOIN SECTION */
+.join-section {
+    background: linear-gradient(rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.1)), var(--bg-deep-blue);
+}
+
+.join-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* CONTACT */
+#contact .card {
+    background-color: var(--white);
+    color: var(--bg-deep-blue);
+}
+
+.form-control:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+}
+
+/* FOOTER */
+footer {
+    background-color: #020617;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-blue);
+}
+
+.footer-logo {
+    /* max-height: 60px;
+    width: auto; */
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* INTERACTIVE 3D PERSPECTIVE DECK NAV */
+.perspective-nav {
+    position: relative;
+    height: 300px;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    transform-style: preserve-3d;
+}
+
+.perspective-link {
+    position: absolute;
+    width: 200px;
+    height: 48px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(37, 99, 235, 0.4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    color: var(--white) !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+    /* Optimize transition: only animate transform and background */
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+    box-shadow: -4px 6px 15px rgba(0,0,0,0.5);
+    /* Hardware acceleration hints */
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* Remove expensive backdrop-filter during the main animation block for smoother performance */
+.perspective-nav:hover .perspective-link {
+    backdrop-filter: none;
+}
+
+.perspective-link i {
+    margin-right: 15px;
+    color: var(--accent-blue);
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+/* Optimized 3D Stacked State */
+.perspective-nav .perspective-link:nth-child(1) { transform: translate3d(0, 0, 0) rotateX(55deg) rotateZ(-30deg); z-index: 1; }
+.perspective-nav .perspective-link:nth-child(2) { transform: translate3d(0, -15px, 25px) rotateX(55deg) rotateZ(-30deg); z-index: 2; }
+.perspective-nav .perspective-link:nth-child(3) { transform: translate3d(0, -30px, 50px) rotateX(55deg) rotateZ(-30deg); z-index: 3; }
+.perspective-nav .perspective-link:nth-child(4) { transform: translate3d(0, -45px, 75px) rotateX(55deg) rotateZ(-30deg); z-index: 4; }
+.perspective-nav .perspective-link:nth-child(5) { transform: translate3d(0, -60px, 100px) rotateX(55deg) rotateZ(-30deg); z-index: 5; }
+
+/* Optimized Spread Out State */
+.perspective-nav:hover .perspective-link:nth-child(1), .perspective-nav:active .perspective-link:nth-child(1) { transform: translate3d(0, 0, 0) rotateX(0) rotateZ(0); z-index: 5; }
+.perspective-nav:hover .perspective-link:nth-child(2), .perspective-nav:active .perspective-link:nth-child(2) { transform: translate3d(0, 55px, 0) rotateX(0) rotateZ(0); z-index: 4; }
+.perspective-nav:hover .perspective-link:nth-child(3), .perspective-nav:active .perspective-link:nth-child(3) { transform: translate3d(0, 110px, 0) rotateX(0) rotateZ(0); z-index: 3; }
+.perspective-nav:hover .perspective-link:nth-child(4), .perspective-nav:active .perspective-link:nth-child(4) { transform: translate3d(0, 165px, 0) rotateX(0) rotateZ(0); z-index: 2; }
+.perspective-nav:hover .perspective-link:nth-child(5), .perspective-nav:active .perspective-link:nth-child(5) { transform: translate3d(0, 220px, 0) rotateX(0) rotateZ(0); z-index: 1; }
+
+/* Individual Link Hover/Active */
+.perspective-nav .perspective-link:hover {
+    background: var(--accent-blue);
+    border-color: var(--white);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+    transform: translate3d(0, inherit, 30px) scale(1.05) !important;
+    z-index: 10 !important;
+}
+
+.perspective-nav .perspective-link:hover i {
+    color: var(--white);
+}
+
+/* Scaling for Mobile Screens so the 3D look fits perfectly */
+@media (max-width: 576px) {
+    .perspective-nav {
+        transform: scale(0.85); /* Slightly smaller to fit mobile width */
+        height: 260px;
+    }
+}
+
+.social-links a {
+    color: var(--white);
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-blue);
+}

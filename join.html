@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join BuildStack Studio | Application</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">BUILDSTACK<span class="text-accent">STUDIO</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active nav-join-btn" href="join.html">Join Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- JOIN US PAGE HEADER -->
+    <header class="py-5 bg-deep-blue text-center mt-5">
+        <div class="container py-4">
+            <h1 class="display-4 fw-bold text-white">Join BuildStack Studio</h1>
+            <p class="lead text-white opacity-75 mx-auto" style="max-width: 700px;">
+                We’re building a community of developers, designers, and creatives. 
+                Whether you code, create, or promote, there’s a place for you here.
+            </p>
+        </div>
+    </header>
+
+    <!-- APPLICATION FORM SECTION -->
+    <section class="py-5 bg-light-section">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- TABS FOR APPLICATION TYPE -->
+                    <ul class="nav nav-pills nav-justified mb-4" id="applicationTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active fw-bold" id="tech-tab" data-bs-toggle="pill" data-bs-target="#tech-form" type="button" role="tab" onclick="updateRoles('technical')">Technical Roles</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link fw-bold" id="non-tech-tab" data-bs-toggle="pill" data-bs-target="#non-tech-form" type="button" role="tab" onclick="updateRoles('non-technical')">Non-Technical Roles</button>
+                        </li>
+                    </ul>
+
+                    <!-- APPLICATION FORM CARD -->
+                    <div class="card p-4 border-0 shadow-lg join-form-card">
+                        <form id="joinUsForm">
+                            <input type="hidden" id="appType" name="appType" value="technical">
+                            
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Full Name</label>
+                                    <input type="text" class="form-control" name="fullName" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Email Address</label>
+                                    <input type="email" class="form-control" name="email" placeholder="john@example.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Role Applying For</label>
+                                    <select class="form-select" id="roleSelect" name="role" required>
+                                        <!-- Options populated by JavaScript -->
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Skills / Tools Known</label>
+                                    <textarea class="form-control" name="skills" rows="3" placeholder="e.g. React, Node.js, Figma, SEO..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Portfolio / Links (Optional)</label>
+                                    <input type="text" class="form-control" name="portfolio" placeholder="https://github.com/..." >
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label fw-bold">Motivation / Short Bio</label>
+                                    <textarea class="form-control" name="bio" rows="4" placeholder="Tell us why you want to join..." required></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" id="submitJoin" class="btn btn-primary w-100 py-3 fw-bold">Submit Application</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Success Message -->
+                        <div id="joinSuccess" class="alert alert-success mt-3 d-none text-center">
+                            <h5 class="fw-bold mb-1">Thank you for applying!</h5>
+                            <p class="mb-0">We’ll review your application and get back to you soon.</p>
+                            <a href="index.html" class="btn btn-outline-success mt-3">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-5 text-white">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <!-- Replace the src below with your actual logo image file path -->
+                    <img src="images/buildstack.png" alt="BuildStack Logo" class="footer-logo">
+                    <a class="navbar-brand fw-bold mb-3 d-block" href="index.html">BUILDSTACK<span class="text-accent">STUDIO</span></a>
+                    <p class="small opacity-75">Empowering businesses through custom digital solutions and community-driven development.</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h5 class="fw-bold mb-3">Explore</h5>
+                    <div class="perspective-nav">
+                        <a href="index.html#home" class="perspective-link">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                        <a href="index.html#about" class="perspective-link">
+                            <i class="fas fa-info-circle"></i> About
+                        </a>
+                        <a href="index.html#services" class="perspective-link">
+                            <i class="fas fa-concierge-bell"></i> Services
+                        </a>
+                        <a href="index.html#projects" class="perspective-link">
+                            <i class="fas fa-laptop-code"></i> Projects
+                        </a>
+                        <a href="join.html" class="perspective-link">
+                            <i class="fas fa-user-plus"></i> Join Us
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <h5 class="fw-bold mb-3">Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram fa-lg me-3"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-lg me-3"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="opacity-25">
+            <div class="text-center small opacity-75 mt-4">
+                © 2026 BuildStack Studio. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <!-- Formspree Scripts -->
+    <script>
+      window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+      formspree('initForm', { formElement: '#joinUsForm', formId: 'mvzvdnyw' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
